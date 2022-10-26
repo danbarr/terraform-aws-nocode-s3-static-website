@@ -1,6 +1,11 @@
-variable "github_token" {
+variable "vault_username" {
   type = string
-  description = "GitHub personal access token for authentication to Vault."
+  description = "Username for access to Vault."
+}
+
+variable "vault_password" {
+  type = string
+  description = "Password for access to Vault."
   sensitive = true
 }
 

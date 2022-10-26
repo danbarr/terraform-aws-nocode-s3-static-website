@@ -16,12 +16,10 @@ terraform {
 }
 
 provider "vault" {
-  auth_login {
-    path = "auth/github/login"
+  auth_login_userpass {
+    username = var.vault_username
+    password = var.vault_password
     namespace = "admin"
-    parameters = {
-      "token" = var.github_token
-    }
   }
 }
 
