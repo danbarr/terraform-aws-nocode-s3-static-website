@@ -15,6 +15,16 @@ terraform {
   }
 }
 
+provider "vault" {
+  auth_login {
+    path = "auth/github/login"
+    namespace = "admin"
+    parameters = {
+      "token" = var.github_token
+    }
+  }
+}
+
 data "vault_aws_access_credentials" "creds" {
   backend = "aws"
   role    = "s3_access"

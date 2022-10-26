@@ -1,3 +1,9 @@
+variable "github_token" {
+  type = string
+  description = "GitHub personal access token for authentication to Vault."
+  sensitive = true
+}
+
 variable "prefix" {
   type        = string
   description = "This prefix will be included in the name of most resources."
