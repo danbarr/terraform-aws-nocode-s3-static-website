@@ -9,7 +9,7 @@ terraform {
       version = "~> 3.4"
     }
     vault = {
-      source = "hashicorp/vault"
+      source  = "hashicorp/vault"
       version = "~> 3.9"
     }
   }
@@ -17,8 +17,8 @@ terraform {
 
 provider "vault" {
   auth_login_userpass {
-    username = var.vault_username
-    password = var.vault_password
+    username  = var.vault_username
+    password  = var.vault_password
     namespace = "admin"
   }
 }
@@ -29,7 +29,7 @@ data "vault_aws_access_credentials" "creds" {
 }
 
 provider "aws" {
-  region = var.region
+  region     = var.region
   access_key = data.vault_aws_access_credentials.creds.access_key
   secret_key = data.vault_aws_access_credentials.creds.secret_key
 
@@ -120,9 +120,9 @@ resource "aws_s3_object" "index" {
 }
 
 resource "aws_s3_object" "images" {
-  for_each = fileset("files/img/", "*.png")
-  bucket   = aws_s3_bucket.www_bucket.id
-  key      = "img/${each.value}"
-  source   = "files/img/${each.value}"
+  for_each     = fileset("files/img/", "*.png")
+  bucket       = aws_s3_bucket.www_bucket.id
+  key          = "img/${each.value}"
+  source       = "files/img/${each.value}"
   content_type = "image/png"
 }
