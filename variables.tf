@@ -1,14 +1,3 @@
-variable "vault_username" {
-  type = string
-  description = "Username for access to Vault."
-}
-
-variable "vault_password" {
-  type = string
-  description = "Password for access to Vault."
-  sensitive = true
-}
-
 variable "prefix" {
   type        = string
   description = "This prefix will be included in the name of most resources."

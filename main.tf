@@ -8,30 +8,11 @@ terraform {
       source  = "hashicorp/random"
       version = "~> 3.4"
     }
-    vault = {
-      source  = "hashicorp/vault"
-      version = "~> 3.9"
-    }
   }
-}
-
-provider "vault" {
-  auth_login_userpass {
-    username  = var.vault_username
-    password  = var.vault_password
-    namespace = "admin"
-  }
-}
-
-data "vault_aws_access_credentials" "creds" {
-  backend = "aws"
-  role    = "s3_access"
 }
 
 provider "aws" {
-  region     = var.region
-  access_key = data.vault_aws_access_credentials.creds.access_key
-  secret_key = data.vault_aws_access_credentials.creds.secret_key
+  region = var.region
 
   default_tags {
     tags = {
