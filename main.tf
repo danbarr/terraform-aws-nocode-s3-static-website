@@ -1,8 +1,9 @@
 terraform {
+  required_version = ">= 0.13"
   required_providers {
     aws = {
       source  = "hashicorp/aws"
-      version = "~> 4.0"
+      version = "~> 5.0"
     }
     random = {
       source  = "hashicorp/random"
@@ -17,7 +18,7 @@ provider "aws" {
   default_tags {
     tags = {
       environment = var.env
-      department  = "TPMM"
+      department  = var.department
       application = "HashiCafe website"
     }
   }
