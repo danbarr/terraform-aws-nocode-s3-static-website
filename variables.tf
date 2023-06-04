@@ -13,6 +13,12 @@ variable "env" {
   description = "Value for the environment tag."
 }
 
+variable "department" {
+  type        = string
+  description = "Value for the department tag."
+  default     = "WebDev"
+}
+
 variable "hashi_products" {
   type = list(object({
     name       = string
